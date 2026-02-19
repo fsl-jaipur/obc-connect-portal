@@ -17,77 +17,98 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-foreground/30" />
       </div>
 
-      {/* Content */}
+      Content
       <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-4 mb-6"
-          >
-            {/* <img src={logo} alt="Logo" className="h-20 w-20 md:h-24 md:w-24 rounded-full shadow-2xl border-2 border-primary-foreground/30" /> */}
-          </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-tight mb-4"
-          >
-            अखिल भारतीय सयुंक्त
-            <br />
-            <span className="text-gold">ओ.बी.सी. महासभा</span>
-          </motion.h1>
+<div className="max-w-3xl">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    className="flex items-center gap-4 mb-6"
+  >
+    {/* <img src={logo} alt="Logo" className="h-20 w-20 md:h-24 md:w-24 rounded-full shadow-2xl border-2 border-primary-foreground/30" /> */}
+  </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap gap-3 mb-8"
-          >
-            {["एक बनो, नेक रहो", "संघर्ष ही जीवन है", "संगठन में शक्ति है"].map((slogan) => (
-              <span
-                key={slogan}
-                className="px-4 py-1.5 bg-primary/20 backdrop-blur-sm border border-primary-foreground/20 text-primary-foreground text-sm md:text-base font-hindi rounded-full"
-              >
-                {slogan}
-              </span>
-            ))}
-          </motion.div>
+  <motion.h1
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.15 }}
+    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-tight mb-4"
+  >
+    अखिल भारतीय सयुंक्त
+    <br />
+    <span className="text-gold">ओ.बी.सी. महासभा</span>
+  </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="text-lg md:text-xl text-primary-foreground/85 font-light mb-10 max-w-xl leading-relaxed"
-          >
-            ओ.बी.सी. समाज के अधिकारों की रक्षा और सामाजिक न्याय के लिए समर्पित राष्ट्रीय संगठन
-          </motion.p>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.3 }}
+    className="flex flex-wrap gap-3 mb-8"
+  >
+    {["एक बनो, नेक रहो", "संघर्ष ही जीवन है", "संगठन में शक्ति है"].map((slogan) => (
+      <span
+        key={slogan}
+        className="px-4 py-1.5 bg-primary/20 backdrop-blur-sm border border-primary-foreground/20 text-primary-foreground text-sm md:text-base font-hindi rounded-full"
+      >
+        {slogan}
+      </span>
+    ))}
+  </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-wrap gap-4"
-          >
-            <a
-              href="#about"
-              className="inline-flex items-center gap-2 bg-gradient-saffron text-primary-foreground px-8 py-4 rounded-full text-base font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
-            >
-              <Users className="h-5 w-5" />
-              सदस्य बनें
-            </a>
-            <a
-              href="#objectives"
-              className="inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-primary-foreground/25 transition-all"
-            >
-              अधिक जानें
-              <ArrowDown className="h-4 w-4" />
-            </a>
-          </motion.div>
-        </div>
-      </div>
+  <motion.p
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.45 }}
+    className="text-lg md:text-xl text-primary-foreground/85 font-light mb-10 max-w-xl leading-relaxed"
+  >
+    ओ.बी.सी. समाज के अधिकारों की रक्षा और सामाजिक न्याय के लिए समर्पित राष्ट्रीय संगठन
+  </motion.p>
+
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.6 }}
+    className="flex flex-wrap gap-4"
+  >
+    <a
+      href="#about"
+      className="inline-flex items-center gap-2 bg-gradient-saffron text-primary-foreground px-8 py-4 rounded-full text-base font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+    >
+      <Users className="h-5 w-5" />
+      सदस्य बनें
+    </a>
+    <a
+      href="#objectives"
+      className="inline-flex items-center gap-2 bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground px-8 py-4 rounded-full text-base font-semibold hover:bg-primary-foreground/25 transition-all"
+    >
+      अधिक जानें
+      <ArrowDown className="h-4 w-4" />
+    </a>
+  </motion.div>
+</div>
+
+{/* RIGHT SIDE LOGO */}
+<motion.div
+  initial={{ opacity: 0, x: 60 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.8 }}
+  className="absolute right-5 lg:right-20 top-[20%] -translate-y-1/2 hidden lg:flex items-center justify-center opacity-60"
+>
+  <div className="bg-white pt-1 rounded-full">
+    <img
+      src={logo}
+      alt="OBC Logo"
+      className="w-40 md:w-52 lg:w-64 xl:w-72 object-contain drop-shadow-2xl"
+    />
+  </div>
+</motion.div>
+
+
+
+</div>
+
 
       {/* Decorative bottom wave */}
       <div className="absolute bottom-0 left-0 right-0">

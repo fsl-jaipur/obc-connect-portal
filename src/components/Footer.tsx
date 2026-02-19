@@ -69,9 +69,9 @@ const Footer = () => {
               <div className="flex items-start gap-3 text-primary-foreground/70 text-sm">
                 <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
                 <span>
-                  ऑ. 19-20, 1st फ्लोर, ग्रीन पार्क कॉलोनी,
+                प्लॉट नंबर: 115, 116, विनायक रेजीडेंसी - I(F3), 
                   <br />
-                  गोविन्दपुरा, कालवाड़ रोड, जयपुर - 302012
+                  विनायक विहार डी, हरनाथपुरा, कलवार रोड, जयपुर - 302012
                 </span>
               </div>
             </div>

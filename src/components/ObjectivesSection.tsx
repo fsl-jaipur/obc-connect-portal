@@ -1,4 +1,6 @@
 import { motion, useInView } from "framer-motion";
+import { Link } from "react-router-dom";
+
 import { useRef } from "react";
 import {
   GraduationCap,
@@ -98,13 +100,13 @@ const ObjectivesSection = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-center mt-12"
         >
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 bg-gradient-green text-secondary-foreground px-8 py-4 rounded-full text-base font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
-          >
-            <Users className="h-5 w-5" />
-            अभी सदस्य बनें
-          </a>
+        
+          <Link to="/objectives" className="inline-flex items-center gap-2 bg-gradient-green text-secondary-foreground px-8 py-4 rounded-full text-base font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+  <Users className="h-5 w-5" />
+  सभी उद्देश्य देखें
+</Link>
+
+        
         </motion.div>
       </div>
     </section>

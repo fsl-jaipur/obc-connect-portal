@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, Phone, Users } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
 
@@ -60,13 +61,14 @@ const Header = () => {
                 {item.label}
               </a>
             ))}
-            <a
-              href="tel:9549566300"
-              className="ml-3 flex items-center gap-2 bg-gradient-saffron text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
-            >
-              <Phone className="h-4 w-4" />
-              संपर्क करें
-            </a>
+          <Link
+  to="/member-form"
+  className="ml-3 flex items-center gap-2 bg-gradient-saffron text-primary-foreground px-5 py-2.5 rounded-full text-sm font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-105"
+>
+  <Users className="h-5 w-5" />
+  सदस्य बनें
+</Link>
+
           </nav>
 
           {/* Mobile Toggle */}

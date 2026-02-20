@@ -57,7 +57,7 @@ const Index = () => {
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background w-[100%]">
       <main>
         <HeroSection />
         <AboutSection />

@@ -5,12 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/logo.png";
 
 const navItems = [
-  { label: "होम", href: "#home" },
-  { label: "हमारे बारे में", href: "#about" },
-  { label: "उद्देश्य", href: "#objectives" },
-  { label: "नेतृत्व", href: "#leadership" },
-  { label: "गैलरी", href: "#gallery" },
-  { label: "संपर्क", href: "#contact" },
+  { label: "होम", href: "/#home" },
+  { label: "हमारे बारे में", href: "/#about" },
+  { label: "उद्देश्य", href: "/#objectives" },
+  { label: "नेतृत्व", href: "/#leadership" },
+  { label: "गैलरी", href: "/#gallery" },
+  { label: "संपर्क", href: "/#contact" },,
+  { label: "डोनेशन", href: "/donations" },
 ];
 
 const Header = () => {
@@ -38,7 +39,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-3">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3 shrink-0">
+          <a href="/#home" className="flex items-center gap-3 shrink-0">
             <img src={logo} alt="OBC Mahasabha Logo" className="h-14 w-14 md:h-16 md:w-16 rounded-full shadow-lg" />
             <div className="hidden sm:block">
               <h1 className="text-base md:text-lg font-heading font-bold text-foreground leading-tight">

@@ -1,6 +1,5 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Header from "../components/Header"
 
 import {
   GraduationCap,
@@ -15,7 +14,19 @@ import {
   BookOpenCheck,
 } from "lucide-react";
 
-const objectives = [
+import type { LucideIcon } from "lucide-react";
+
+
+// ✅ Type define for objective
+interface Objective {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+
+// ✅ Data with type
+const objectives: Objective[] = [
   {
     icon: Users,
     title: "सभी वर्गों के लिए छूट",
@@ -46,8 +57,6 @@ const objectives = [
     description:
       "होटल और रेस्टोरेंट में सदस्यों के लिए विशेष छूट।",
   },
-
-  // new data
   {
     icon: Briefcase,
     title: "रोजगार सहायता",
@@ -74,19 +83,19 @@ const objectives = [
   },
 ];
 
-const AllObjectives = () => {
-  const ref = useRef(null);
+
+const AllObjectives: React.FC = () => {
+
+  // ✅ typed ref
+  const ref = useRef<HTMLDivElement | null>(null);
 
   const isInView = useInView(ref, {
     once: true,
     margin: "-100px",
   });
 
-  
 
   return (
-    <>
-    <Header/> 
     <section
       ref={ref}
       className="py-20 bg-cream-pattern min-h-screen"
@@ -120,86 +129,83 @@ const AllObjectives = () => {
         {/* Objectives list */}
         <div className="max-w-4xl mx-auto space-y-5">
 
-          {objectives.map((obj, index) => (
-            <motion.div
-              key={obj.title}
-              initial={{ opacity: 0, x: -40 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.08,
-              }}
-              className="
-                group
-                flex gap-5
-                bg-card
-                rounded-xl
-                p-6
-                border border-border
-                hover:border-secondary/30
-                shadow-sm
-                hover:shadow-lg
-                transition-all duration-300
-              "
-            >
+          {objectives.map((obj, index) => {
 
-              {/* Icon */}
-              <div
+            const Icon = obj.icon;
+
+            return (
+              <motion.div
+                key={obj.title}
+                initial={{ opacity: 0, x: -40 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.08,
+                }}
                 className="
-                  shrink-0
-                  w-14 h-14
+                  group
+                  flex gap-5
+                  bg-card
                   rounded-xl
-                  bg-gradient-green
-                  flex items-center justify-center
-                  group-hover:scale-110
-                  transition-transform
+                  p-6
+                  border border-border
+                  hover:border-secondary/30
+                  shadow-sm
+                  hover:shadow-lg
+                  transition-all duration-300
                 "
               >
-                <obj.icon className="h-7 w-7 text-secondary-foreground" />
-              </div>
 
-
-              {/* Content */}
-              <div className="flex-1">
-
-                <h3 className="
-                  text-lg
-                  font-heading
-                  font-bold
-                  text-foreground
-                  mb-2
-                  flex items-center gap-2
-                ">
-
-                  <CheckCircle2 className="
-                    h-5 w-5
-                    text-secondary
+                {/* Icon */}
+                <div
+                  className="
                     shrink-0
-                  " />
+                    w-14 h-14
+                    rounded-xl
+                    bg-gradient-green
+                    flex items-center justify-center
+                    group-hover:scale-110
+                    transition-transform
+                  "
+                >
+                  <Icon className="h-7 w-7 text-secondary-foreground" />
+                </div>
 
-                  {obj.title}
 
-                </h3>
+                {/* Content */}
+                <div className="flex-1">
+
+                  <h3 className="
+                    text-lg
+                    font-heading
+                    font-bold
+                    text-foreground
+                    mb-2
+                    flex items-center gap-2
+                  ">
+
+                    <CheckCircle2 className="h-5 w-5 text-secondary shrink-0" />
+
+                    {obj.title}
+
+                  </h3>
 
 
-                <p className="
-                  text-muted-foreground
-                  leading-relaxed
-                ">
-                  {obj.description}
-                </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {obj.description}
+                  </p>
 
-              </div>
+                </div>
 
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
 
         </div>
 
       </div>
 
     </section>
-    </>
   );
 };
 

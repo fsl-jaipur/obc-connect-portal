@@ -721,15 +721,35 @@ const stateDistrictData = {
 
 const membershipOptions = [
 
-  { id: "life",    label: "आजीवन सदस्य",  sublabel: "आजीवन",    price: "₹1,000 (आजीवन)", popular: true  },
+  { id: "life",    label: "आजीवन सदस्य",  sublabel: "आजीवन",    price: "₹200 (आजीवन)", popular: true  },
  
 ];
 
 const benefits = [
-  { icon: Scale,    title: "कानूनी सहायता",     subtitle: "कानूनी सहायता",      desc: "ओबीसी संबंधित भेदभाव मामलों के लिए निःशुल्क कानूनी सहायता।" },
-  { icon: BookOpen, title: "शिक्षा सहायता",     subtitle: "शिक्षा सहायता",       desc: "शिक्षा सहायता के लिए छात्रवृत्ति व मार्गदर्शन।" },
-  { icon: Network,  title: "सामुदायिक नेटवर्क", subtitle: "सामुदायिक नेटवर्क",   desc: "भारत भर में 10 लाख+ सदस्यों के साथ जुड़ें।" },
-  { icon: Award,    title: "सम्मान",            subtitle: "पहचान",               desc: "सदस्यता प्रमाणपत्र और पहचान पत्र प्रदान किया जाता है।" },
+  {
+    icon: Scale,
+    title: "कानूनी सहायता",
+    subtitle: "निःशुल्क कानूनी मदद",
+    desc: "ओबीसी संबंधित भेदभाव मामलों के लिए निःशुल्क कानूनी सहायता प्रदान की जाती है।",
+  },
+  {
+    icon: BookOpen,
+    title: "शिक्षा सहायता",
+    subtitle: "छात्रवृत्ति और मार्गदर्शन",
+    desc: "छात्रों को शिक्षा सहायता, छात्रवृत्ति और करियर मार्गदर्शन प्रदान किया जाता है।",
+  },
+  {
+    icon: Network,
+    title: "सामुदायिक नेटवर्क",
+    subtitle: "10 लाख+ सदस्य",
+    desc: "भारत भर में 10 लाख से अधिक सदस्यों के साथ जुड़कर मजबूत नेटवर्क का हिस्सा बनें।",
+  },
+  {
+    icon: Award,
+    title: "सम्मान और पहचान",
+    subtitle: "प्रमाणपत्र और ID कार्ड",
+    desc: "सदस्यता प्रमाणपत्र और आधिकारिक पहचान पत्र प्रदान किया जाता है।",
+  },
 ];
 
 // ── Validation patterns ───────────────────────────────────────────────────
@@ -743,7 +763,7 @@ const validationRules = {
 
 const bloodGroupOptions = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
 const tshirtSizeOptions = ["S", "M", "L", "XL", "XXL"];
-const educationOptions = ["10वीं पास", "12वीं पास", "स्नातक", "स्नातकोत्तर", "कंप्यूटर कोर्स", "डिप्लोमा", "अन्य"];
+const educationOptions = ["8वीं पास", "10वीं पास", "12वीं पास", "स्नातक", "स्नातकोत्तर", "कंप्यूटर कोर्स", "डिप्लोमा", "अन्य"];
 
 // ── Component ─────────────────────────────────────────────────────────────────
 interface FormData {
@@ -761,6 +781,7 @@ interface FormData {
   pan: string;
   aadhaar: string;
   education: string;
+  otherEducation: string; 
   dob: string;
   marriageDate: string;
   bloodGroup: string;
@@ -782,7 +803,7 @@ export default function MembershipPage() {
     residenceAddress: "", officeAddress: "", residencePhone: "", officePhone: "",
     mobile: "", whatsapp: "", email: "", pan: "", aadhaar: "", education: "",
     dob: "", marriageDate: "", bloodGroup: "", tshirtSize: "",
-    socialWork: "", specialAchievement: "", membershipType: "life", state: "", district: "",
+    socialWork: "", specialAchievement: "", membershipType: "life", state: "", district: "",  otherEducation: "",  
     imageFile: undefined,
   });
 
@@ -933,14 +954,17 @@ export default function MembershipPage() {
     setErrors({ ...errors, [name]: error });
   };
 
+  const today = new Date().toISOString().split("T")[0];
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     let { name, value } = e.target;
     
     // Only allow numeric input for mobile, whatsapp, aadhaar
-    if (name === "mobile" || name === "whatsapp" || name === "aadhaar") {
+    if (name === "mobile" || name === "whatsapp" || name === "aadhaar" || name === "officePhone") {
       value = value.replace(/[^0-9]/g, "");
     }
     
+  
     // Convert PAN to uppercase
     if (name === "pan") {
       value = value.toUpperCase();
@@ -948,12 +972,23 @@ export default function MembershipPage() {
     
     // Real-time validation
     const error = validateField(name, value);
+    setErrors({
+      ...errors,
+      [name]: error,
+    });
     setErrors({ ...errors, [name]: error });
 
     if (name === "state") {
-      setForm({ ...form, state: value, district: "" });
+      setForm({
+        ...form,
+        state: value,
+        district: "", // reset district
+      });
     } else {
-      setForm({ ...form, [name]: value });
+      setForm({
+        ...form,
+        [name]: value,
+      });
     }
   };
 
@@ -1039,7 +1074,6 @@ export default function MembershipPage() {
         <div className="relative z-10">
           <span className="inline-block bg-[#f4a92a]/20 border border-[#f4a92a]/40 text-[#f4c96a] rounded-full px-4 py-1 text-xs font-extrabold tracking-wide mb-4">ओबीसी महासभा</span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#f4a92a] mb-1">सदस्यता</h1>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">सदस्यपद</h2>
           <p className="text-[#94a8c8] text-base max-w-xl mx-auto leading-relaxed">
             हमारे आंदोलन में शामिल हों और भारत के सबसे बड़े ओबीसी सामुदायिक संगठन का हिस्सा बनें।
           </p>
@@ -1285,8 +1319,14 @@ export default function MembershipPage() {
               {/* 7 Contact */}
               <div className="mb-2"><label className="text-sm font-semibold text-[#0f2056] mb-1 block">7. सम्पर्क सूत्र</label></div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
-                <div className="flex flex-col"><label className="text-sm text-gray-500 mb-1">निवास</label><input name="residencePhone" value={form.residencePhone} onChange={handleChange} placeholder="दूरभाष नंबर" className="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:border-[#e87722] focus:ring-4 focus:ring-[#e87722]/20" /></div>
-                <div className="flex flex-col"><label className="text-sm text-gray-500 mb-1">ऑफिस</label><input name="officePhone" value={form.officePhone} onChange={handleChange} placeholder="ऑफिस नंबर" className="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:border-[#e87722] focus:ring-4 focus:ring-[#e87722]/20" /></div>
+                <div className="flex flex-col">
+                  <label className="text-sm text-gray-500 mb-1">निवास</label>
+                  <input name="residencePhone" value={form.residencePhone} onChange={handleChange} placeholder="दूरभाष नंबर" className="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:border-[#e87722] focus:ring-4 focus:ring-[#e87722]/20" /></div>
+                <div className="flex flex-col">
+                  <label className="text-sm text-gray-500 mb-1">ऑफिस</label>
+                  <input name="officePhone" value={form.officePhone} onChange={handleChange} placeholder="ऑफिस नंबर"  inputMode="numeric"
+  pattern="[0-9]*" className="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:border-[#e87722] focus:ring-4 focus:ring-[#e87722]/20" />
+                  </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
                 <div className="flex flex-col">
@@ -1375,35 +1415,74 @@ export default function MembershipPage() {
                   <option value="">-- योग्यता चुनें --</option>
                   {educationOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
                 </select>
+
+
+                {/* Other input show when "अन्य" selected */}
+{form.education === "अन्य" && (
+  <input
+    type="text"
+    name="otherEducation"
+    value={form.otherEducation || ""}
+    onChange={handleChange}
+    onBlur={handleBlur}
+    required
+    placeholder="अपनी योग्यता लिखें"
+    className={`w-full border rounded-lg px-4 py-2 text-sm bg-white mt-3 focus:outline-none focus:ring-4 transition ${
+      errors.otherEducation
+        ? "border-red-500 focus:border-red-500 focus:ring-red-500/20"
+        : "border-gray-200 focus:border-[#e87722] focus:ring-[#e87722]/20"
+    }`}
+  />
+)}
                 <ErrorText message={errors.education} />
               </div>
 
               {/* 9 & 10 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div className="flex flex-col">
-                  <label className="text-sm font-semibold text-[#0f2056] mb-1">9. जन्म दिनांक <R /></label>
-                  <input 
-                    type="date" 
-                    name="dob" 
-                    value={form.dob} 
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    required 
-                    className={`w-full border rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:ring-4 transition ${errors.dob ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-200 focus:border-[#e87722] focus:ring-[#e87722]/20'}`}
-                  />
-                  <ErrorText message={errors.dob} />
-                </div>
-                <div className="flex flex-col">
-                  <label className="text-sm font-semibold text-[#0f2056] mb-1">10. विवाह वर्षगांठ</label>
-                  <input 
-                    type="date" 
-                    name="marriageDate" 
-                    value={form.marriageDate} 
-                    onChange={handleChange} 
-                    className="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:border-[#e87722] focus:ring-4 focus:ring-[#e87722]/20" 
-                  />
-                </div>
-              </div>
+
+{/* DOB */}
+<div className="flex flex-col">
+  <label className="text-sm font-semibold text-[#0f2056] mb-1">
+    9. जन्म दिनांक <R />
+  </label>
+
+  <input 
+    type="date" 
+    name="dob" 
+    value={form.dob} 
+    onChange={handleChange}
+    onBlur={handleBlur}
+    max={today}   // ✅ future date disabled
+    required 
+    className={`w-full border rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:ring-4 transition ${
+      errors.dob 
+        ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+        : 'border-gray-200 focus:border-[#e87722] focus:ring-[#e87722]/20'
+    }`}
+  />
+
+  <ErrorText message={errors.dob} />
+</div>
+
+
+{/* Marriage Date */}
+<div className="flex flex-col">
+  <label className="text-sm font-semibold text-[#0f2056] mb-1">
+    10. विवाह वर्षगांठ
+  </label>
+
+  <input 
+    type="date" 
+    name="marriageDate" 
+    value={form.marriageDate} 
+    onChange={handleChange}
+    max={today}   // ✅ future date disabled
+    className="w-full border border-gray-200 rounded-lg px-4 py-2 text-sm bg-white focus:outline-none focus:border-[#e87722] focus:ring-4 focus:ring-[#e87722]/20" 
+  />
+
+</div>
+
+</div>
 
               {/* 11 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">

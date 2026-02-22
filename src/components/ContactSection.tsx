@@ -74,14 +74,14 @@ const ContactSection = () => {
             </div>
             <h3 className="text-xl font-heading font-bold text-foreground mb-2">कार्यालय</h3>
             <p className="text-muted-foreground leading-relaxed">
-              ऑ. 19-20, 1st फ्लोर,
+            प्लॉट नंबर: 115, 116,
               <br />
-              ग्रीन पार्क कॉलोनी,
+              विनायक रेजीडेंसी - I(F3), 
               <br />
-              गोविन्दपुरा, कालवाड़ रोड,
+              विनायक विहार डी, हरनाथपुरा,
               <br />
-              जयपुर - 302012
-            </p>
+              कलवार रोड, जयपुर - 302012
+            </p>          
           </motion.div>
         </div>
 

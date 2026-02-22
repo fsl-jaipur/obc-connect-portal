@@ -424,12 +424,18 @@ const headingVariants = {
 };
 
 const slideVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  // Note: Variant resolver in Framer Motion expects (custom, info) signature
-  visible: (i: number, _info?: unknown) => ({
+  hidden: {
+    opacity: 0,
+    scale: 0.95,
+  },
+  visible: (i: number) => ({
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.45, delay: i * 0.07, ease: [0.4, 0, 0.2, 1] },
+    transition: {
+      duration: 0.45,
+      delay: i * 0.07,
+      ease: [0.4, 0, 0.2, 1],
+    },
   }),
 };
 
@@ -590,7 +596,7 @@ export const AdvancedSlider: React.FC<AdvancedSliderProps> = ({
                   scale: 1.03,
                   transition: { duration: 0.3, ease: "easeOut" },
                 }}
-                className="flex-none w-full sm:w-[calc(50%-8px)] md:w-[calc(50%-8px)] [scroll-snap-align:start] rounded-2xl overflow-hidden relative shadow-[0_8px_32px_rgba(0,0,0,0.13)] transition-all duration-[350ms] ease-in-out group hover:shadow-[0_20px_56px_rgba(0,0,0,0.22)] h-[320px] bg-white flex items-center justify-center aspect-[3/4]"
+                className="flex-none w-full sm:w-[calc(50%-8px)] md:w-[calc(50%-8px)] [scroll-snap-align:start] rounded-2xl overflow-hidden relative shadow-[0_8px_32px_rgba(0,0,0,0.13)] transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] group hover:shadow-[0_20px_56px_rgba(0,0,0,0.22)] h-[320px] bg-white flex items-center justify-center aspect-[3/4]"
               >
                 {/* Slide Number Badge */}
                 <span className="absolute top-3.5 left-3.5 z-10 bg-black/70 text-white text-[11px] font-mono tracking-[0.15em] px-2.5 py-1 rounded-full backdrop-blur-sm">

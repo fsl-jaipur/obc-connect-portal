@@ -86,7 +86,6 @@ const objectives: Objective[] = [
 
 const AllObjectives: React.FC = () => {
 
-  // ✅ typed ref
   const ref = useRef<HTMLDivElement | null>(null);
 
   const isInView = useInView(ref, {
@@ -98,7 +97,7 @@ const AllObjectives: React.FC = () => {
   return (
     <section
       ref={ref}
-      className="py-20 bg-cream-pattern min-h-screen"
+      className="py-10 bg-cream-pattern min-h-screen"
     >
 
       <div className="container mx-auto px-4">
@@ -126,8 +125,8 @@ const AllObjectives: React.FC = () => {
         </motion.div>
 
 
-        {/* Objectives list */}
-        <div className="max-w-4xl mx-auto space-y-5">
+        {/* ✅ Grid layout added */}
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-[6%]">
 
           {objectives.map((obj, index) => {
 
@@ -136,8 +135,8 @@ const AllObjectives: React.FC = () => {
             return (
               <motion.div
                 key={obj.title}
-                initial={{ opacity: 0, x: -40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                initial={{ opacity: 0, y: 40 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{
                   duration: 0.5,
                   delay: index * 0.08,
@@ -156,19 +155,33 @@ const AllObjectives: React.FC = () => {
                 "
               >
 
-                {/* Icon */}
+                {/* ✅ India Flag Color Icon Background */}
                 <div
-                  className="
+                  className={`
                     shrink-0
                     w-14 h-14
                     rounded-xl
-                    bg-gradient-green
                     flex items-center justify-center
                     group-hover:scale-110
                     transition-transform
-                  "
+                    ${
+                      index % 3 === 0
+                        ? "bg-orange-500"
+                        : index % 3 === 1
+                        ? "bg-white border border-gray-300"
+                        : "bg-green-600"
+                    }
+                  `}
                 >
-                  <Icon className="h-7 w-7 text-secondary-foreground" />
+
+                  <Icon
+                    className={`h-7 w-7 ${
+                      index % 3 === 1
+                        ? "text-green-700"
+                        : "text-white"
+                    }`}
+                  />
+
                 </div>
 
 
@@ -199,6 +212,7 @@ const AllObjectives: React.FC = () => {
 
               </motion.div>
             );
+
           })}
 
         </div>

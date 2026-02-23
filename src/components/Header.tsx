@@ -12,6 +12,7 @@ const navItems = [
   { label: "गैलरी", href: "/#gallery" },
   { label: "संपर्क", href: "/#contact" },,
   { label: "डोनेशन", href: "/donations" },
+  { label: "डिस्काउंट", href: "/discount" },
 ];
 
 const Header = () => {

@@ -57,6 +57,7 @@ import MemberForm from "./pages/MemberForm";
 import AllObjectives from "./pages/AllObjectives";
 import Donations from "./pages/Donations";
 import NotFound from "./pages/NotFound";
+import Discount from "./pages/Discount"
 
 const router = createBrowserRouter([
   {
@@ -84,8 +85,12 @@ const router = createBrowserRouter([
 
       // Donations page
       {
-        path: "donations",
+        path: "/donations",
         element: <Donations />,
+      },
+      {
+        path: "/discount",
+        element: <Discount />,
       },
 
     ],

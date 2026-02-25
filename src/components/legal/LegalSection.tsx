@@ -38,7 +38,7 @@ const LegalSection = ({ id, title, icon: Icon, children }: LegalSectionProps) =>
     >
 
       <div className="flex items-center gap-3 mb-5">
-        <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
+        <div className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center border border-gray-300">
           <Icon size={20} className="text-primary" />
         </div>
         <h2 className="font-hindi text-xl md:text-2xl font-bold text-foreground">{title}</h2>

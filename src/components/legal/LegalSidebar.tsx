@@ -14,7 +14,7 @@ interface LegalSidebarProps {
 
 const LegalSidebar = ({ sections, activeSection }: LegalSidebarProps) => {
   return (
-    <nav className="hidden lg:block sticky top-8 space-y-1">
+    <nav className="hidden lg:block sticky top-48 space-y-1 ">
       <p className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-3 px-3">
         विषय सूची
       </p>

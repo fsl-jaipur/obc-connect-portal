@@ -32,52 +32,52 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "member-form",
+        path: "/member-form",
         element: <MemberForm />,
       },
 
       {
-        path: "objectives",
+        path: "/objectives",
         element: <AllObjectives />,
       },
 
       {
-        path: "donations",
+        path: "/donations",
         element: <Donations />,
       },
 
       {
-        path: "discount",
+        path: "/discount",
         element: <Discount />,
       },
 
       // ✅ Legal Index Page
       {
-        path: "legal",
+        path: "/legal",
         element: <LegalIndex />,
       },
 
       // ✅ Privacy Policy
       {
-        path: "legal/privacy-policy",
+        path: "/legal/privacy-policy",
         element: <PrivacyPolicy />,
       },
 
       // ✅ Terms
       {
-        path: "legal/terms-and-conditions",
+        path: "/legal/terms-and-conditions",
         element: <TermsAndConditions />,
       },
 
       // ✅ Refund
       {
-        path: "legal/refund-policy",
+        path: "/legal/refund-policy",
         element: <RefundPolicy />,
       },
 
       // ✅ Disclaimer
       {
-        path: "legal/disclaimer",
+        path: "/legal/disclaimer",
         element: <Disclaimer />,
       },
 

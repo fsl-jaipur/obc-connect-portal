@@ -8,7 +8,7 @@ interface HighlightBoxProps {
 const variants = {
 
   info: {
-    bg: "bg-accent border-primary/30",
+    bg: "bg-blue-50 border-primary/30",
     icon: Info,
     iconColor: "text-blue-600",
   },

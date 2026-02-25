@@ -150,11 +150,11 @@ const Footer = () => {
             <nav className="flex flex-col gap-3">
 
               {[
-                { label: "होम", href: "#home" },
-                { label: "हमारे बारे में", href: "#about" },
-                { label: "उद्देश्य", href: "#objectives" },
-                { label: "नेतृत्व", href: "#leadership" },
-                { label: "संपर्क", href: "#contact" },
+                { label: "होम", href: "/#home" },
+                { label: "हमारे बारे में", href: "/#about" },
+                { label: "उद्देश्य", href: "/#objectives" },
+                { label: "नेतृत्व", href: "/#leadership" },
+                { label: "संपर्क", href: "/#contact" },
               ].map((link) => (
                 <a
                   key={link.href}

@@ -1,6 +1,19 @@
 import mongoose from "mongoose";
 
 const membershipSchema = new mongoose.Schema({
+
+  receiptNumber: {
+    type: Number,
+    required: true,
+    unique: true
+  },
+
+  membershipFee: {
+    type: Number,
+    default: 200,
+    min: 0
+  },
+
   memberName: { type: String, required: [true, "Member name is required"] },
   fatherName: { type: String, required: [true, "Father name is required"] },
 
@@ -44,12 +57,6 @@ const membershipSchema = new mongoose.Schema({
   membershipType: {
     type: String,
     default: 'life'
-  },
-
-  membershipFee: {
-    type: Number,
-    default: 200,
-    min: 0
   },
 
   state: { type: String, required: [true, "State is required"] },

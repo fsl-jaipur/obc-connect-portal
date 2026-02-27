@@ -23,7 +23,7 @@ app.use("/api/membership", membershipRoute);
 app.use("/api/donations", donationRoute);
 
 
-// ✅ Correct listen syntax
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

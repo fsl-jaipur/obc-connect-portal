@@ -20,7 +20,8 @@
     "mongoos": "^0.0.1-security",
     "mongoose": "^9.2.2",
     "multer": "^2.0.2",
-    "multer-storage-cloudinary": "^4.0.0"
+    "multer-storage-cloudinary": "^4.0.0",
+    "razorpay": "^2.9.6"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"

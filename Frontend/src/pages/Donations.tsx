@@ -33,7 +33,7 @@ const validationRules = {
   },
 };
 
-const presetAmounts = [551, 1100, 2100, 3100, 5100, 7100];
+const presetAmounts = [551, 1100, 2100, 3100, 5100, 11000];
 
 const causes = [
   { id: "education", label: "शिक्षा सहायता", Icon: BookOpen },
@@ -107,7 +107,6 @@ const Donations = () => {
         return validationRules.name.message;
     }
     if (name === "email") {
-      if (!value.trim()) return "यह क्षेत्र आवश्यक है";
       if (!validationRules.email.regex.test(value))
         return validationRules.email.message;
     }
@@ -497,7 +496,7 @@ const Donations = () => {
                     </div>
 
                     <div>
-                      <label className="text-sm font-semibold text-[#0f2056] mb-1 block">ईमेल <R /></label>
+                      <label className="text-sm font-semibold text-[#0f2056] mb-1 block">ईमेल <span className="text-gray-400 font-normal text-xs">(वैकल्पिक)</span></label>
                       <input
                         name="email"
                         type="email"

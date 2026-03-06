@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import First from "./First";
 
@@ -12,6 +9,7 @@ import AllObjectives from "./pages/AllObjectives";
 import Donations from "./pages/Donations";
 import NotFound from "./pages/NotFound";
 import Discount from "./pages/Discount";
+import DetailedGallery from "./pages/DetailedGallery";
 
 import LegalIndex from "./pages/legaleIndex";
 import PrivacyPolicy from "./pages/legal/PrivacyPolicy";
@@ -25,7 +23,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <First />,
     children: [
-
       {
         index: true,
         element: <Index />,
@@ -51,25 +48,21 @@ const router = createBrowserRouter([
         element: <Discount />,
       },
 
-   
       {
         path: "/legal",
         element: <LegalIndex />,
       },
 
-    
       {
         path: "/legal/privacy-policy",
         element: <PrivacyPolicy />,
       },
 
-     
       {
         path: "/legal/terms-and-conditions",
         element: <TermsAndConditions />,
       },
 
- 
       {
         path: "/legal/refund-policy",
         element: <RefundPolicy />,
@@ -79,10 +72,14 @@ const router = createBrowserRouter([
         element: <Disclaimer />,
       },
       {
+        path: "/gallery",
+        element: <DetailedGallery />,
+      },
+
+      {
         path: "/admin",
         element: <AdminPanel />,
       },
-
     ],
   },
 
@@ -90,7 +87,6 @@ const router = createBrowserRouter([
     path: "*",
     element: <NotFound />,
   },
-
 ]);
 
 const App = () => {

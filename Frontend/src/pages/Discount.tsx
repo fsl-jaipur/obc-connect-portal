@@ -1493,7 +1493,7 @@ const OBCMahasabha = () => {
             style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.2rem, 6vw, 4.5rem)", color: "#1a1a1a" }}>
             OBC महासभा
           </h1>
-          <h1 className="font-black leading-tight mb-6 tracking-tight"
+          <h1 className="font-black mb-6 tracking-tight"
             style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.2rem, 6vw, 4.5rem)", background: "linear-gradient(135deg, #f97316, #ea580c, #dc2626)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
             सदस्य छूट लाभ
           </h1>

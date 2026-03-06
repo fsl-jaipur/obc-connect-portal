@@ -48,10 +48,10 @@ const ObjectivesSection = () => {
 
   return (
     <section
-    id="objectives"
-    ref={ref}
-    className="py-20 bg-cream-pattern scroll-mt-24"
-  >
+      id="objectives"
+      ref={ref}
+      className="py-20 bg-cream-pattern scroll-mt-24"
+    >
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -104,13 +104,13 @@ const ObjectivesSection = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-center mt-12"
         >
-        
-          <Link to="/objectives" className="inline-flex items-center gap-2 bg-gradient-green text-secondary-foreground px-8 py-4 rounded-full text-base font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105">
-  <Users className="h-5 w-5" />
-  सभी उद्देश्य देखें
-</Link>
-
-        
+          <Link
+            to="/objectives"
+            className="inline-flex items-center gap-2 bg-gradient-green text-secondary-foreground px-8 py-4 rounded-full text-base font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+          >
+            <Users className="h-5 w-5" />
+            सभी उद्देश्य देखें
+          </Link>
         </motion.div>
       </div>
     </section>

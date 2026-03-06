@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect, useCallback } from "react";
 import { useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
@@ -25,6 +23,8 @@ import img18 from "../assets/gellery18.jpeg";
 import img19 from "../assets/gellery19.jpeg";
 import img20 from "../assets/gellery20.jpeg";
 import img21 from "../assets/gellery21.jpeg";
+import { Link } from "react-router-dom";
+import { GalleryThumbnails } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 export interface SlideItem {
@@ -157,7 +157,7 @@ export const AdvancedSlider: React.FC<AdvancedSliderProps> = ({
 
       setTimeout(() => setAnimating(false), 600);
     },
-    [animating, total]
+    [animating, total],
   );
 
   const prev = () => goTo(current - 1);
@@ -194,8 +194,11 @@ export const AdvancedSlider: React.FC<AdvancedSliderProps> = ({
   const progressWidth = `${((current + 1) / total) * 100}%`;
 
   return (
-    <section id="gallery" className="py-20 bg-cream-pattern scroll-mt-24" ref={sectionRef}>
-
+    <section
+      id="gallery"
+      className="py-20 bg-cream-pattern scroll-mt-24"
+      ref={sectionRef}
+    >
       {/* ── Section Heading ── */}
       <motion.div
         variants={headingVariants}
@@ -218,10 +221,8 @@ export const AdvancedSlider: React.FC<AdvancedSliderProps> = ({
         animate={isInView ? "visible" : "hidden"}
         className={`flex flex-col items-center justify-center px-5 py-10 bg-[#f5f0e8] select-none box-border font-serif ${className}`}
       >
-
         {/* ── MAIN TRACK ── */}
         <div className="relative w-full max-w-5xl flex items-center">
-
           {/* Prev Button */}
           <motion.button
             onClick={prev}
@@ -311,7 +312,11 @@ export const AdvancedSlider: React.FC<AdvancedSliderProps> = ({
                   variants={thumbVariants}
                   initial="hidden"
                   animate="visible"
-                  exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.2 } }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.8,
+                    transition: { duration: 0.2 },
+                  }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => goTo(realIdx)}
                   aria-label={`Go to slide ${realIdx + 1}`}
@@ -359,12 +364,31 @@ export const AdvancedSlider: React.FC<AdvancedSliderProps> = ({
           </span>
         </motion.div>
       </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="text-center mt-12"
+      >
+        <Link
+          to="/gallery"
+          className="inline-flex items-center gap-2 bg-gradient-green text-secondary-foreground px-8 py-4 rounded-full text-base font-semibold shadow-xl hover:shadow-2xl transition-all hover:scale-105"
+        >
+          <GalleryThumbnails className="h-5 w-5" />
+          विस्तृत गैलरी
+        </Link>
+      </motion.div>
     </section>
   );
 };
 
 // ─── GallerySection (default export) ──────────────────────────────────────────
 const GallerySection: React.FC = () => {
+  // Scroll-triggered entrance
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+
   const slides = localSlides.length ? localSlides : [];
   return <AdvancedSlider slides={slides} autoPlay={false} visibleCount={2} />;
 };

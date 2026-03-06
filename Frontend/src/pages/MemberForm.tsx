@@ -37,7 +37,7 @@ const stateDistrictData = {
 
 const membershipOptions = [
 
-  { id: "life",    label: "आजीवन सदस्य",  sublabel: "आजीवन",    price: "₹200 (आजीवन)", popular: true  },
+  { id: "life",    label: "आजीवन सदस्य",  sublabel: "आजीवन",    price: "₹251 (आजीवन)", popular: true  },
  
 ];
 

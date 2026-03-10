@@ -1466,16 +1466,43 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
-              },
-              { timeout: 30000 } // 30 sec timeout
+                timeout: 30000, // 30 sec timeout
+              }
             );
   
             console.log("✅ Backend Success:", res.data);
             setSubmitted(true);
             setIsValid(true);
-  
-            // Reset form (same code)
-            setForm({ /* same reset code */ });
+
+            // Reset form to initial state
+            setForm({
+              memberName: "",
+              fatherName: "",
+              businessNature: "",
+              organizationPosition: "",
+              residenceAddress: "",
+              officeAddress: "",
+              residencePhone: "",
+              officePhone: "",
+              mobile: "",
+              whatsapp: "",
+              email: "",
+              pan: "",
+              aadhaar: "",
+              education: "",
+              dob: "",
+              marriageDate: "",
+              bloodGroup: "",
+              tshirtSize: "",
+              socialWork: "",
+              specialAchievement: "",
+              membershipType: "life",
+              state: "",
+              district: "",
+              otherEducation: "",
+              imageFile: undefined,
+            });
+            setSelectedVidhansabha("");
             setImagePreview("");
             setErrors({});
             

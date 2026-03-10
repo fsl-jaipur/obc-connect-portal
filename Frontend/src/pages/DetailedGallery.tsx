@@ -998,44 +998,7 @@ export default function GallerySection() {
           ))}
         </div>
 
-        {/* Load more button */}
-        <div style={{ textAlign: "center", marginTop: "48px" }}>
-          <button
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-              padding: "14px 40px",
-              borderRadius: "100px",
-              fontWeight: 700,
-              color: "#fff",
-              fontSize: "0.9rem",
-              letterSpacing: "0.05em",
-              background: "linear-gradient(135deg, #FF6B00, #CC3300, #111)",
-              border: "none",
-              cursor: "pointer",
-              boxShadow: "0 8px 30px rgba(255,107,0,0.35)",
-              fontFamily: "'Noto Sans Devanagari', sans-serif",
-              transition: "transform 0.2s, box-shadow 0.2s",
-            }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.05)";
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 16px 40px rgba(255,107,0,0.5)";
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 8px 30px rgba(255,107,0,0.35)";
-            }}
-          >
-            <span>और तस्वीरें देखें</span>
-            <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-              <path d="M12 5v14M5 12l7 7 7-7" />
-            </svg>
-          </button>
-        </div>
-
-        {/* Bottom pattern strip */}
-        <div style={{ ...patternStrip, marginTop: "64px" }} />
+    
       </section>
 
       {/* ── Popup ── */}
@@ -1053,18 +1016,6 @@ export default function GallerySection() {
   );
 }
 
-// ─── Shared styles ─────────────────────────────────────────
-const patternStrip: React.CSSProperties = {
-  background: `repeating-linear-gradient(
-    90deg,
-    #FF6B00 0px, #FF6B00 2px,
-    transparent 2px, transparent 18px,
-    #111 18px, #111 20px,
-    transparent 20px, transparent 38px
-  )`,
-  height: "4px",
-  opacity: 0.7,
-};
 
 const statCard: React.CSSProperties = {
   background: "linear-gradient(135deg, #fff 0%, #FFF5EF 100%)",

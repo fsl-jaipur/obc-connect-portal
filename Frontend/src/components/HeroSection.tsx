@@ -32,79 +32,80 @@ const HeroSection = () => {
 
           {/* Heading */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="
-              text-2xl
-              sm:text-3xl
-              md:text-4xl
-              lg:text-5xl
-              xl:text-6xl
-              font-heading font-bold
-              text-white
-              leading-tight
-              mb-4
-            "
-          >
-            अखिल भारतीय सयुंक्त
-            <br />
-            <span className="text-gold">ओ.बी.सी. महासभा</span>
-          </motion.h1>
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.15 }}
+  className="
+    text-xl
+    sm:text-2xl
+    md:text-3xl
+    lg:text-4xl
+    xl:text-5xl
+    font-heading font-bold
+    text-white
+    leading-tight
+    mb-4
+  "
+>
+  अखिल भारतीय सयुंक्त
+  <br />
+  <span className="text-gold">ओ.बी.सी. महासभा</span>
+</motion.h1>
 
 
           {/* slogans */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="
-              flex flex-wrap
-              gap-2 sm:gap-3
-              mb-6 sm:mb-8
-            "
-          >
-            {[
-              "एक बनो, नेक रहो",
-              "संघर्ष ही जीवन है",
-              "संगठन में शक्ति है",
-            ].map((slogan) => (
-              <span
-                key={slogan}
-                className="
-                  px-3 py-1
-                  sm:px-4 sm:py-1.5
-                  bg-primary/20
-                  backdrop-blur-sm
-                  border border-white/20
-                  text-white
-                  text-xs sm:text-sm md:text-base
-                  rounded-full
-                "
-              >
-                {slogan}
-              </span>
-            ))}
-          </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.3 }}
+  className="
+    flex flex-wrap
+    gap-2 sm:gap-3
+    mb-6 sm:mb-8
+  "
+>
+  {[
+    "एक बनो, नेक रहो",
+    "संघर्ष ही जीवन है",
+    "संगठन में शक्ति है",
+  ].map((slogan) => (
+    <span
+      key={slogan}
+      className="
+        px-3 py-1
+        sm:px-4 sm:py-1.5
+        bg-primary/20
+        backdrop-blur-sm
+        border border-white/20
+        text-white
+        text-[10px] sm:text-xs md:text-sm
+        rounded-full
+      "
+    >
+      {slogan}
+    </span>
+  ))}
+</motion.div>
 
 
           {/* description */}
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45 }}
-            className="
-              text-sm
-              sm:text-base
-              md:text-lg
-              lg:text-xl
-              text-white/90
-              mb-8 sm:mb-10
-              max-w-xl
-            "
-          >
-            ओ.बी.सी. समाज के अधिकारों की रक्षा और सामाजिक न्याय के लिए समर्पित राष्ट्रीय संगठन
-          </motion.p>
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6, delay: 0.45 }}
+  className="
+  text-[10px]
+  sm:text-xs
+  md:text-sm
+  lg:text-base
+  text-white/90
+  mb-8 sm:mb-10
+  max-w-xl
+">
+  वर्तमान समय में ओबीसी समाज कई जातियों में बिखरा हुआ है, जिसके कारण हमें हमारे अधिकार पूर्ण रूप से नहीं मिल पा रहे हैं।  
+  अखिल भारतीय संयुक्त ओबीसी महासभा का उद्देश्य समाज की 2650+ जातियों को एक मंच पर लाकर  
+  अधिकारों की रक्षा, सामाजिक एकता और जागरूकता को मजबूत करना है।
+</motion.p>
 
 
           {/* buttons */}

@@ -1397,7 +1397,7 @@ export default function MembershipPage() {
       );
 
       const options = {
-        key: "rzp_test_S9B7QWgyGMR5Rd", // 👈 yaha apna test key daalo
+        key: "rzp_test_SPQyvTnLfHY93U", // 👈 yaha apna test key daalo
         amount: data.order.amount,
         currency: "INR",
         order_id: data.order.id,

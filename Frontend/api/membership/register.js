@@ -6,7 +6,7 @@ export const config = {
 
 import formidable from "formidable";
 import mongoose from "mongoose";
-import Membership from "../../models/membershipModel.js"; // path check karo
+import Membership from "../../models/membershipModel.js";
 
 const MONGODB_URI = process.env.MONGO_URI;
 
@@ -48,9 +48,9 @@ export default async function handler(req, res) {
 
       try {
 
-        const member = await Member.create({
+        const member = await Membership.create({
           ...fields,
-          image: imagePath,
+          image: imagePath || fields.image
         });
 
         return res.status(200).json({
@@ -65,7 +65,7 @@ export default async function handler(req, res) {
 
         return res.status(500).json({
           success: false,
-          message: "Database save failed",
+          message: dbError.message
         });
 
       }
@@ -78,7 +78,7 @@ export default async function handler(req, res) {
 
     return res.status(500).json({
       success: false,
-      message: "Registration failed",
+      message: error.message
     });
 
   }

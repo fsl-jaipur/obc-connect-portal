@@ -1406,7 +1406,7 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
     try {
      
       const { data } = await axios.post(
-        "/api/membership/create-order",
+        "http://localhost:3000/api/membership/create-order",
       );
   
       const options = {
@@ -1415,7 +1415,7 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
         currency: "INR",
         order_id: data.order.id,
         name: "OBC Mahasabha",
-        description: "Membership Fee ₹200",
+        description: "Membership Fee ₹251",
   
         handler: async function (response) {
           try {
@@ -1448,7 +1448,7 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
             formData.append("state", form.state);
             formData.append("district", form.district);
             formData.append("vidhansabha", selectedVidhansabha);
-            formData.append("membershipFee", "200");
+            formData.append("membershipFee", 251);
             formData.append("razorpay_payment_id", response.razorpay_payment_id); // ✅ ADD YE
             formData.append("razorpay_order_id", response.razorpay_order_id);     // ✅ ADD YE
   
@@ -1460,7 +1460,7 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
   
             // 3️⃣ Save Membership
             const res = await axios.post(
-              "/api/membership/register",
+              "http://localhost:3000/api/membership/register",
               formData,
               {
                 headers: {

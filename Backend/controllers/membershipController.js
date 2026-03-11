@@ -26,7 +26,7 @@ const formatDate = (date) => {
 const numberToHindiWords = (num) => {
   const hindiMap = {
     100: "एक सौ मात्र",
-    200: "दो सौ मात्र",
+    251: "दो सौ इक्यावन मात्र",
     500: "पाँच सौ मात्र",
     1000: "एक हजार मात्र"
   };
@@ -186,7 +186,7 @@ if (lastMember && lastMember.receiptNumber) {
            <tr><td>Special Achievement</td><td>${req.body.specialAchievement || "-"}</td></tr>
 
            <tr><td>Membership Type</td><td>${req.body.membershipType || "-"}</td></tr>
-           <tr><td>Membership Fee</td><td>₹${req.body.membershipFee || "200"}</td></tr>
+           <tr><td>Membership Fee</td><td>₹${req.body.membershipFee || "251"}</td></tr>
 
            <tr><td>PAN</td><td>${req.body.pan || "-"}</td></tr>
            <tr><td>Aadhaar</td><td>${req.body.aadhaar || "-"}</td></tr>

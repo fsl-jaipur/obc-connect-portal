@@ -81,4 +81,5 @@ const membershipSchema = new mongoose.Schema({
 membershipSchema.index({ email: 1 }, { sparse: true });
 membershipSchema.index({ mobile: 1 });
 
-export default mongoose.model("Membership", membershipSchema);
+export default mongoose.models.Membership ||
+mongoose.model("Membership", membershipSchema);

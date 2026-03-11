@@ -86,12 +86,10 @@ if (lastMember && lastMember.receiptNumber) {
       }
     }
 
-    if (!req.file && !req.body.image) {
-      return res.status(400).json({
-        success: false,
-        message: "Profile image required"
-      });
-    }
+  // image validation
+if (!req.file && !req.body.image) {
+  console.log("⚠️ No profile image uploaded");
+}
 
     // ✅ PAN validation
     if (req.body.pan && req.body.pan.length !== 10) {

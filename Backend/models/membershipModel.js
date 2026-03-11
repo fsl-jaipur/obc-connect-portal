@@ -10,7 +10,7 @@ const membershipSchema = new mongoose.Schema({
 
   membershipFee: {
     type: Number,
-    default: 200,
+    default: 251,
     min: 0
   },
 

@@ -17,6 +17,79 @@ import TermsAndConditions from "./pages/legal/TermsAndConditions";
 import RefundPolicy from "./pages/legal/RefundPolicy";
 import Disclaimer from "./pages/legal/Disclaimer";
 import AdminPanel from "./pages/AdminPanel";
+import AdminLayout from "./layouts/AdminLayout";
+import DonationAdmin from "./pages/DonationAdmin";
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <First />,
+//     children: [
+//       {
+//         index: true,
+//         element: <Index />,
+//       },
+
+//       {
+//         path: "/member-form",
+//         element: <MemberForm />,
+//       },
+
+//       {
+//         path: "/objectives",
+//         element: <AllObjectives />,
+//       },
+
+//       {
+//         path: "/donations",
+//         element: <Donations />,
+//       },
+
+//       {
+//         path: "/discount",
+//         element: <Discount />,
+//       },
+
+//       {
+//         path: "/legal",
+//         element: <LegalIndex />,
+//       },
+
+//       {
+//         path: "/legal/privacy-policy",
+//         element: <PrivacyPolicy />,
+//       },
+
+//       {
+//         path: "/legal/terms-and-conditions",
+//         element: <TermsAndConditions />,
+//       },
+
+//       {
+//         path: "/legal/refund-policy",
+//         element: <RefundPolicy />,
+//       },
+//       {
+//         path: "/legal/disclaimer",
+//         element: <Disclaimer />,
+//       },
+//       {
+//         path: "/gallery",
+//         element: <DetailedGallery />,
+//       },
+
+//       {
+//         path: "/admin",
+//         element: <AdminPanel />,
+//       },
+//     ],
+//   },
+
+//   {
+//     path: "*",
+//     element: <NotFound />,
+//   },
+// ]);
 
 const router = createBrowserRouter([
   {
@@ -27,42 +100,34 @@ const router = createBrowserRouter([
         index: true,
         element: <Index />,
       },
-
       {
         path: "/member-form",
         element: <MemberForm />,
       },
-
       {
         path: "/objectives",
         element: <AllObjectives />,
       },
-
       {
         path: "/donations",
         element: <Donations />,
       },
-
       {
         path: "/discount",
         element: <Discount />,
       },
-
       {
         path: "/legal",
         element: <LegalIndex />,
       },
-
       {
         path: "/legal/privacy-policy",
         element: <PrivacyPolicy />,
       },
-
       {
         path: "/legal/terms-and-conditions",
         element: <TermsAndConditions />,
       },
-
       {
         path: "/legal/refund-policy",
         element: <RefundPolicy />,
@@ -75,10 +140,25 @@ const router = createBrowserRouter([
         path: "/gallery",
         element: <DetailedGallery />,
       },
+    ],
+  },
 
+  // ✅ ADMIN ROUTES (HEADER NAHI AAYEGA)
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
       {
-        path: "/admin",
+        index: true,
         element: <AdminPanel />,
+      },
+      {
+        path: "members",
+        element: <AdminPanel />,
+      },
+      {
+        path: "donations",
+        element: <DonationAdmin />,
       },
     ],
   },

@@ -1466,7 +1466,7 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
-                timeout: 30000, // 30 sec timeout
+                timeout: 30000, 
               }
             );
   

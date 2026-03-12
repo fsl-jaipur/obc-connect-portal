@@ -50,13 +50,13 @@ connectDB();
 // -------- CORS CONFIG --------
 const corsOptions = {
   origin: [
-    "http://localhost:8080",  // frontend
-    "http://localhost:5173"   // vite default
+    "http://localhost:8080",
+    "http://localhost:5173",
+    "https://www.obcmahasabha.co.in"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 };
-
 app.use(cors(corsOptions));
 // -----------------------------
 

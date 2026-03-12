@@ -1406,7 +1406,7 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
     try {
      
       const { data } = await axios.post(
-        "https://www.obcmahasabha.co.in/api/membership/create-order",
+        "/api/membership/create-order",
       );
   
       const options = {
@@ -1460,13 +1460,13 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
   
             // 3️⃣ Save Membership
             const res = await axios.post(
-              "https://www.obcmahasabha.co.in/api/membership/register",
+              "/api/membership/register",
               formData,
               {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },
-                timeout: 30000, 
+                timeout: 30000, // 30 sec timeout
               }
             );
   

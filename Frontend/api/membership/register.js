@@ -227,7 +227,7 @@
 import formidable from "formidable";
 import mongoose from "mongoose";
 
-// 1. Config for Vercel
+
 export const config = {
   api: {
     bodyParser: false,
@@ -236,7 +236,7 @@ export const config = {
 
 const MONGODB_URI = "mongodb+srv://manishrajora453:oguvsFmidQ1wVphn@cluster0.2twg0tz.mongodb.net/अखिल?retryWrites=true&w=majority&appName=Cluster0";
 
-/* ---------------- MONGOOSE SCHEMA & MODEL ---------------- */
+
 const membershipSchema = new mongoose.Schema({
   receiptNumber: { type: Number, required: true, unique: true },
   membershipFee: { type: Number, default: 251 },
@@ -268,10 +268,10 @@ const membershipSchema = new mongoose.Schema({
   image: { type: String, required: true },
 }, { timestamps: true });
 
-// Avoid double export - define model constant
+
 const Membership = mongoose.models.Membership || mongoose.model("Membership", membershipSchema);
 
-/* ---------------- DATABASE CONNECT ---------------- */
+/* ---------------- DATABASE CONNECT --------------- */
 async function connectDB() {
   if (mongoose.connections[0].readyState) return;
   await mongoose.connect(MONGODB_URI);

@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import serverless from "serverless-http";
 
 import connectDB from "../Backend/config/db.js";
 import membershipRoute from "../Backend/routes/membershipRoute.js";
@@ -16,4 +17,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/membership", membershipRoute);
 app.use("/api/donations", donationRoute);
 
-export default app;
+export default serverless(app);

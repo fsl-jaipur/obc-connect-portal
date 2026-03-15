@@ -89,7 +89,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import serverless from "serverless-http";
 
 import connectDB from "./config/db.js";
 import membershipRoute from "./routes/membershipRoute.js";
@@ -117,11 +116,18 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/uploads", express.static("uploads"));
 
-app.use("/membership", membershipRoute);
-app.use("/donations", donationRoute);
+app.use("/api/membership", membershipRoute);
+app.use("/api/donations", donationRoute);
 
 app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-export default serverless(app);
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`API server is running locally on port ${PORT}`);
+  });
+}
+
+export default app;

@@ -47,7 +47,6 @@
 
 
 
-
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -60,7 +59,8 @@ dotenv.config();
 
 const app = express();
 
-connectDB();
+// MongoDB connect
+await connectDB();
 
 const corsOptions = {
   origin: [
@@ -81,6 +81,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/membership", membershipRoute);
 app.use("/api/donations", donationRoute);
 
+// Test route
 app.get("/api", (req, res) => {
   res.send("API is running...");
 });

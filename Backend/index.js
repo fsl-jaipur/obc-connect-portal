@@ -48,8 +48,6 @@
 
 
 
-
-
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -83,9 +81,8 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/membership", membershipRoute);
 app.use("/api/donations", donationRoute);
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("API is running...");
-}); 
-
+});
 
 export default app;

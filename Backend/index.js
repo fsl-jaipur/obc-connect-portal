@@ -51,7 +51,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import connectDB from "./config/db.js";
+
 import membershipRoute from "./routes/membershipRoute.js";
 import donationRoute from "./routes/donationRoute.js";
 
@@ -59,8 +59,7 @@ dotenv.config();
 
 const app = express();
 
-// MongoDB connect
-await connectDB();
+// MongoDB connect  
 
 const corsOptions = {
   origin: [

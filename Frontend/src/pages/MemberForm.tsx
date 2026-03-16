@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from "react";
-import axios from "axios";
+import Instance from "../AxiosConfig";
 import {
   Scale,
   BookOpen,
@@ -1438,7 +1438,7 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
   
     try {
      
-      const { data } = await axios.post(
+      const { data } = await Instance.post(
         "/api/membership/create-order",
       );
   
@@ -1492,7 +1492,7 @@ if (form.email.trim() && !validationRules.email.regex.test(form.email)) {
             console.log("📤 Sending form data to backend...");
   
             // 3️⃣ Save Membership
-            const res = await axios.post(
+            const res = await Instance.post(
               "/api/membership/register",
               formData,
               {

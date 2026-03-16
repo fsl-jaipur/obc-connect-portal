@@ -1,4 +1,5 @@
 import Membership from "../models/membershipModel.js";
+import connectDB from "../config/db.js";
 import sgMail from "@sendgrid/mail";
 import dotenv from "dotenv";
 import Razorpay from "razorpay";
@@ -34,6 +35,7 @@ const numberToHindiWords = (num) => {
 
 export const createOrder = async (req, res) => {
   try {
+    await connectDB();
     const options = {
       amount: 251 * 100, // ₹251
       currency: "INR",

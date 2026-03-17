@@ -1,5 +1,4 @@
 import Membership from "../models/membershipModel.js";
-import connectDB from "../config/db.js";
 import sgMail from "@sendgrid/mail";
 import dotenv from "dotenv";
 import Razorpay from "razorpay";
@@ -12,21 +11,6 @@ const razorpay = new Razorpay({
 });
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-const sendEmailSafe = async (msg, label) => {
-  if (!process.env.SENDGRID_API_KEY) {
-    console.warn(`[sendgrid] skipped (${label}): missing SENDGRID_API_KEY`);
-    return;
-  }
-  try {
-    await sgMail.send(msg);
-  } catch (error) {
-    console.error(
-      `[sendgrid] failed (${label}):`,
-      error?.response?.body || error?.message || error,
-    );
-  }
-};
 
 // ✅ Date Format Function
 const formatDate = (date) => {
@@ -50,7 +34,6 @@ const numberToHindiWords = (num) => {
 
 export const createOrder = async (req, res) => {
   try {
-    await connectDB();
     const options = {
       amount: 251 * 100, // ₹251
       currency: "INR",
@@ -74,7 +57,6 @@ export const createOrder = async (req, res) => {
 
 export const createMembership = async (req, res) => {
   try {
-    await connectDB();
     console.log("BODY:", req.body);
     console.log("FILE:", req.file);
 
@@ -163,13 +145,6 @@ export const createMembership = async (req, res) => {
 
     await membership.save();
 
-    // Respond ASAP so external integrations (email) can't cause a Vercel timeout.
-    res.status(201).json({
-      success: true,
-      message: "Membership saved successfully",
-      data: membership,
-    });
-
     const amount = req.body.membershipFee || 251;
     const amountWords = numberToHindiWords(amount);
 
@@ -245,8 +220,7 @@ export const createMembership = async (req, res) => {
       `,
     };
 
-    // Fire-and-forget (don't block the HTTP response)
-    void sendEmailSafe(msg, "admin-notify");
+    await sgMail.send(msg);
 
     const userReceipt = {
       to: req.body.email,
@@ -364,10 +338,14 @@ export const createMembership = async (req, res) => {
     };
 
     if (req.body.email && req.body.email.trim() !== "") {
-      void sendEmailSafe(userReceipt, "user-receipt");
+      await sgMail.send(userReceipt);
     }
 
-    return;
+    return res.status(201).json({
+      success: true,
+      message: "Membership saved and admin notified successfully",
+      data: membership,
+    });
   } catch (error) {
     console.error("Error:", error.response?.body || error.message);
 
@@ -381,7 +359,6 @@ export const createMembership = async (req, res) => {
 
 export const getAllMemberships = async (req, res) => {
   try {
-    await connectDB();
     const memberships = await Membership.find().sort({ receiptNumber: -1 });
 
     res.status(200).json({
@@ -400,7 +377,6 @@ export const getAllMemberships = async (req, res) => {
 
 export const getSingleMembership = async (req, res) => {
   try {
-    await connectDB();
     const membership = await Membership.findById(req.params.id);
 
     if (!membership) {
